@@ -1,8 +1,10 @@
 name: Release Package
 
 on:
-  release:
-    types: [ "created" ]
+  push:
+    tags:
+      - 'libfs-v*'  # Triggers on tags like libfs-v1, libfs-v2, etc.
+  workflow_dispatch:  # Also allows manual triggering
 
 permissions:
   contents: write
@@ -21,23 +23,23 @@ jobs:
 
       - name: Compile C++ code
         run: |
-          g++ main.cpp -o tester.exe -municode
+          g++ main.cpp -o testrunner.exe -municode
           dir
 
       - name: Prepare package folder
         run: |
-          mkdir libfs
-          copy tester.exe libfs\tester.exe
+          mkdir package
+          copy testrunner.exe package\testrunner.exe
 
       - name: Create package zip
         run: |
-          powershell -Command "Compress-Archive -Path libfs\\* -DestinationPath libfs.zip"
+          powershell -Command "Compress-Archive -Path package\\* -DestinationPath testrunner.zip"
 
       - name: Publish to GitHub Packages
         uses: softprops/action-gh-release@v1
         with:
-          name: libfs-${{ github.run_number }}
-          tag_name: libfs-${{ github.run_number }}
-          files: libfs.zip
+          name: ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
+          files: testrunner.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
