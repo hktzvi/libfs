@@ -22,7 +22,7 @@ jobs:
 
       - name: Prepare package folder
         run: |
-          mkdir package
+          mkdir libfs
           copy tester.exe libfs\tester.exe
 
       - name: Create package zip
