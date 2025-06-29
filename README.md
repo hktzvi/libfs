@@ -1,16 +1,28 @@
-A filesystem testing program which tests variations of all common operations in the Windows fileapi. This should help ensure the outcomes of the operations against virtual drives are consistent with those of other devices.
+# Filesystem Testing Program
 
-Example compile:
+This program tests variations of common operations using the Windows File API.  
+It helps verify that behaviors on virtual drives are consistent with those on physical devices.
+
+## Compile Example
+
+```bash
 g++ main.cpp -o tester.exe -municode
+```
 
-Compilers tested:
-C:\Qt6.6.2\Tools\mingw1120_64\bin\g++.exe
-C:\TDM-GCC-64\bin\g++.exe
+### Compilers Tested
 
-Example usage:
+- C:\Qt6.6.2\Tools\mingw1120_64\bin\g++.exe
+- C:\TDM-GCC-64\bin\g++.exe
+
+## Example Usage
+
+```bash
 .\tester.exe "Z:\Reese\win32"
+```
 
-Example output:
+## Example Output
+
+```text
 [OK] CreateFileW DesiredAccess=GENERIC_WRITE CreationDisposition=CREATE_ALWAYS Flags=FILE_ATTRIBUTE_NORMAL    
 [OK] CreateFileW DesiredAccess=GENERIC_WRITE CreationDisposition=CREATE_NEW Flags=FILE_ATTRIBUTE_NORMAL       
 [OK] CreateFileW DesiredAccess=GENERIC_WRITE CreationDisposition=TRUNCATE_EXISTING Flags=FILE_ATTRIBUTE_NORMAL
