@@ -1,7 +1,6 @@
-# Filesystem Testing Program
+# Filesystem Testing Library
 
-This program tests variations of common operations using the Windows File API.  
-It helps verify that behaviors on virtual drives are consistent with those on physical devices.
+This library contains variations of common operations using the Windows File API and ensures each outcome is expected. A simple program with main function is included for development.
 
 ## Compile Example
 
