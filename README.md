@@ -1,6 +1,8 @@
-# Filesystem Testing Library
+# Filesystem Testing Library 
 
 This library contains variations of common operations using the Windows File API and ensures each outcome is expected. A simple program with main function is included for development.
+
+[![Build](https://github.com/hktzvi/libfs/actions/workflows/main-push.yml/badge.svg)](https://github.com/hktzvi/libfs/actions/workflows/main-push.yml)
 
 ## Compile Example
 
