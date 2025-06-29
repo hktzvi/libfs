@@ -1,9 +1,9 @@
-name: Manual C++ Build
+name: Build
 
-# Trigger manually from the Actions tab
 on:
-  workflow_dispatch:  # Allows manual trigger from GitHub UI
-
+  push: 
+    branches: [ "main" ]
+      
 jobs:
   build:
     name: Build on Windows
