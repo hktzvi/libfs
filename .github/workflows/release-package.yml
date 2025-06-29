@@ -4,6 +4,10 @@ on:
   release:
     types: [ "created" ]
 
+permissions:
+  contents: write
+  packages: write
+
 jobs:
   build-and-publish:
     runs-on: windows-latest
@@ -32,8 +36,8 @@ jobs:
       - name: Publish to GitHub Packages
         uses: softprops/action-gh-release@v1
         with:
-          name: libfs-v${{ github.run_number }}
-          tag_name: libfs-v${{ github.run_number }}
+          name: libfs-${{ github.run_number }}
+          tag_name: libfs-${{ github.run_number }}
           files: libfs.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
