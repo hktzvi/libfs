@@ -5,17 +5,35 @@ on:
     types: [ "created" ]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
+  build-and-publish:
+    runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify g++ compiler
+        run: g++ --version
+
+      - name: Compile C++ code
+        run: |
+          g++ main.cpp -o tester.exe -municode
+          dir
+
+      - name: Prepare package folder
+        run: |
+          mkdir package
+          copy tester.exe libfs\tester.exe
+
+      - name: Create package zip
+        run: |
+          powershell -Command "Compress-Archive -Path libfs\\* -DestinationPath libfs.zip"
+
+      - name: Publish to GitHub Packages
+        uses: softprops/action-gh-release@v1
+        with:
+          name: libfs-v${{ github.run_number }}
+          tag_name: libfs-v${{ github.run_number }}
+          files: libfs.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
