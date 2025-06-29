@@ -7,7 +7,7 @@ This library contains variations of common operations using the Windows File API
 ## Compile Example
 
 ```bash
-g++ main.cpp -o tester.exe -municode
+g++ main.cpp -o testrunner.exe -municode
 ```
 
 ### Compilers Tested
@@ -18,7 +18,7 @@ g++ main.cpp -o tester.exe -municode
 ## Example Usage
 
 ```bash
-.\tester.exe "Z:\Reese\win32"
+.\testrunner.exe "Z:\Reese\win32"
 ```
 
 ## Example Output
