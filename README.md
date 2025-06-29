@@ -1,4 +1,4 @@
-# Filesystem Testing Library 
+# Filesystem Library
 
 This library contains variations of common operations using the Windows File API and ensures each outcome is expected. A simple program with main function is included for development.
 
