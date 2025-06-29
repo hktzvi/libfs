@@ -1,0 +1,27 @@
+name: Manual C++ Build
+
+# Trigger manually from the Actions tab
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build C++ Program
+    runs-on: windows-latest  # You can also use windows-latest if you prefer
+
+    steps:
+      # Step 1: Checkout the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Install g++ (if not already installed)
+      - name: Install g++
+        run: sudo apt-get update && sudo apt-get install -y g++
+
+      # Step 3: Compile the C++ program
+      - name: Compile main.cpp
+        run: g++ main.cpp -o tester.exe -municode
+
+      # Step 4: Verify the output
+      - name: List output
+        run: ls -l tester.exe
